@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+30.times do |i|
+  player = Player.create(name: Faker::BossaNova.artist)
+  #save a invalid object
+  if i == 15
+    album = Album.new(name: "", player_id: player.id)
+    album.save(validate: false)
+  else
+    Album.create(name: Faker::BossaNova.song, player_id: player.id)
+  end
+end
